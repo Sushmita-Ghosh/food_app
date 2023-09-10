@@ -1,0 +1,21 @@
+{
+  "name": "food-app",
+  "version": "1.0.0",
+  "description": "This is a food app build using the swiggy api",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "food",
+    "name",
+    "swiggy",
+    "food",
+    "api"
+  ],
+  "author": "Sushmita Ghosh",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
