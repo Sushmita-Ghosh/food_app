@@ -1,0 +1,10 @@
+.res-cards {
+  display: flex;
+  /* border: 1px solid black; */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.restaurant-container {
+}

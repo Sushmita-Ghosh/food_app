@@ -1,0 +1,21 @@
+.res-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+  /* border: 1px solid black; */
+  justify-content: center;
+  width: 250px;
+  height: auto;
+  background-color: #ffe6c7;
+}
+
+.res-img img {
+  height: 150px;
+  width: 100%;
+}
+
+.res-heading {
+  display: flex;
+  flex-wrap: wrap;
+}
