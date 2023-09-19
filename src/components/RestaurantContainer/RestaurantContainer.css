@@ -9,7 +9,14 @@
 .restaurant-container {
 }
 
-.filter-btn {
+.res-search {
+  display: flex;
   padding: 3px;
-  margin: 5px 0;
+  margin: 5px 5px;
+}
+.filter-btn {
+}
+
+.search {
+  padding-right: 7px;
 }
