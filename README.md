@@ -20,13 +20,13 @@ This application uses the [Swiggy Api](https://www.swiggy.com/dapi/restaurants/l
 
 ### Basic Folder Structure
 ---
-Header
--Logo
--Nav Items
-Body
+* Header
+  - Logo
+  - Nav Items
+* Body
 - Search
 - RestaurantContainer - RestaurantCard
-Footer
+* Footer
 -Copyright
 -Links
 -Address
