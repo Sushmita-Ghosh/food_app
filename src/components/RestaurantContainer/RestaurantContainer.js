@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./RestaurantContainer.css";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import restaurants from "../../utils/mock-data";
 import { useState } from "react";
+import Shimmer from "../Shimmer/Shimmer";
 
 const RestaurantContainer = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(restaurants);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
-  return (
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await data.json();
+
+    // console.log(
+    //   json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+    // );
+
+    setListOfRestaurants(
+      // Optional Chaining
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+
+  // if (listOfRestaurants.length == []) {
+  //   return <Shimmer />;
+  // }
+
+  return listOfRestaurants.length == [] ? (
+    <Shimmer />
+  ) : (
     <div className="restaurant-container">
       {/* <div className="search">Search</div> */}
       <div className="filter">
@@ -26,7 +54,7 @@ const RestaurantContainer = () => {
       </div>
       <div className="res-cards">
         {listOfRestaurants.map((restaurant) => {
-          return <RestaurantCard restaurant={restaurant} />;
+          return <RestaurantCard restaurant={restaurant} key={restaurant.id} />;
         })}
       </div>
     </div>
