@@ -16,7 +16,7 @@ This application uses the [Swiggy Api](https://www.swiggy.com/dapi/restaurants/l
 
 ### Features:
 ---
-
+*
 
 ### Basic Folder Structure
 ---
@@ -24,10 +24,11 @@ This application uses the [Swiggy Api](https://www.swiggy.com/dapi/restaurants/l
   - Logo
   - Nav Items
 * Body
-- Search
-- RestaurantContainer - RestaurantCard
+  - Search
+  - RestaurantContainer
+      * RestaurantCard
 * Footer
--Copyright
--Links
--Address
--Contact Information
+  - Copyright
+  - Links
+  - Address
+  - Contact Information
