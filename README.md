@@ -23,10 +23,9 @@ This application uses the [Swiggy Api](https://www.swiggy.com/dapi/restaurants/l
 * Header
   - Logo
   - Nav Items
-* Body
+* RestaurantContainer
   - Search
-  - RestaurantContainer
-      * RestaurantCard
+  - RestaurantCard
 * Footer
   - Copyright
   - Links
