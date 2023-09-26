@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import logo from "../../assets/Logo.png";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -13,9 +14,15 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li href="#">Home</li>
-          <li href="#">About</li>
-          <li href="#">Contact</li>
+          <li href="#">
+            <Link to="/">Home</Link>
+          </li>
+          <li href="#">
+            <Link to="/about"> About</Link>
+          </li>
+          <li href="#">
+            <Link to="/contact">Contact</Link>
+          </li>
           <li href="#">Cart</li>
           <button
             className="login-btn"
