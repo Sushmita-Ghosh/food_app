@@ -23,6 +23,8 @@ const useRestaurants = () => {
     //   json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
     // );
 
+    console.log(json);
+
     setListOfRestaurants(
       // Optional Chaining
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
