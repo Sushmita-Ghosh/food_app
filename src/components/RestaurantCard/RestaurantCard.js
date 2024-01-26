@@ -14,7 +14,7 @@ const RestaurantCard = ({ restaurant }) => {
     deliveryTime,
   } = restaurant.info;
   return (
-    <div className="m-4 p-4 w-[250px] bg-gray-100 hover:bg-gray-200 rounded-lg">
+    <div className="m-4 p-4 w-[250px] h-[370px] bg-gray-100 hover:bg-gray-200 rounded-lg overflow-hidden">
       <div>
         <img
           className="w-full h-[150px] rounded-lg"
@@ -23,7 +23,7 @@ const RestaurantCard = ({ restaurant }) => {
         />
       </div>
       <h3 className="font-bold py-4 text-lg">{name}</h3>
-      <h4>{cuisines.join(" ,")}</h4>
+      <h4>{cuisines.slice(0, 2).join(" ,")}</h4>
       <h4>{avgRating} stars</h4>
       <h4>{costForTwo}</h4>
       <h4>{deliveryTime} minutes</h4>

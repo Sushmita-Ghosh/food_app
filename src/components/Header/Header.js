@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import logo from "../../assets/Logo.png";
-import "./Header.css";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 
@@ -10,23 +9,28 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
-      <div className="logo">
-        <img src={logo} alt="website logo" />
+    <div className="flex justify-between shadow-lg">
+      <div className="flex items-center">
+        <img className="w-28" src={logo} alt="website logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "✅" : "🔴"}</li>
-          <li href="#">
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
+          <li className="px-4" href="#">
             <Link to="/">Home</Link>
           </li>
-          <li href="#">
+          <li className="px-4" href="#">
             <Link to="/about"> About</Link>
           </li>
-          <li href="#">
+          <li className="px-4" href="#">
             <Link to="/contact">Contact</Link>
           </li>
-          <li href="#">Cart</li>
+          <li className="px-4" href="#">
+            <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="px-4" href="#">
+            Cart
+          </li>
           <button
             className="login-btn"
             onClick={() => {

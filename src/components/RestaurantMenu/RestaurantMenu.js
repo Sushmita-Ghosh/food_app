@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
+import RestaurantCategory from "../RestaurantCategory/RestaurantCategory";
 
 function RestaurantMenu() {
   // getting the resId from our params so as to make a dynamic call for menudetails
   const { resId } = useParams();
 
-  console.log(resId);
+  // console.log(resId);
+
+  // taking the state for the index of the  restaurant category
+  const [showIndex, setShowIndex] = useState(0);
 
   // custom hook to fetch data
   const resInfo = useRestaurantMenu(resId);
@@ -28,29 +32,58 @@ function RestaurantMenu() {
     : resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
         ?.card;
 
-  // console.log(itemCards);
+  // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+  // filtering out all the item categories for the accordian.
+
+  const categories =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+  // console.log(categories);
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
+    <div className="text-center">
+      <h1 className="font-bold my-6 text-2xl">{name}</h1>
+      <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-      <h2>Menu</h2>
-      <ul>
-        {itemCards.map((item) => {
-          return (
-            <li key={item.card.info.id}>
-              {/* for all the items we will not have price in swiggy api , hence used defaultPrice 
-              & all price is in paise so divide by 100 */}
-              {item.card.info.name} -{" Rs. "}
-              {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-            </li>
-          );
-        })}
-      </ul>
+
+      {/* categories accordian */}
+      {categories.map((category, index) => (
+        // controlled component
+        <RestaurantCategory
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+          showItems={index === showIndex && true}
+          setShowIndex={() => setShowIndex(index)}
+        />
+      ))}
     </div>
   );
 }
 
 export default RestaurantMenu;
+
+{
+  /* <h2>Menu</h2>
+      <ul>
+        {itemCards.map((item) => {
+          return (
+            <li key={item.card.info.id}> */
+}
+{
+  /* for all the items we will not have price in swiggy api , hence used defaultPrice 
+              & all price is in paise so divide by 100 */
+}
+{
+  /* {item.card.info.name} -{" Rs. "}
+              {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
+            </li>
+          );
+        })}
+      </ul> */
+}

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import "./RestaurantContainer.css";
-import RestaurantCard from "../RestaurantCard/RestaurantCard";
+import RestaurantCard, {
+  withPromotedLabel,
+} from "../RestaurantCard/RestaurantCard";
 import restaurants from "../../utils/mock-data";
 import { useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
@@ -15,6 +16,10 @@ const RestaurantContainer = () => {
   // using custom hook to fetch the data for restaurants
   const { filteredRestaurants, listOfRestaurants, setFilteredRestaurants } =
     useRestaurants();
+
+  // restaurant with Promoted Label
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   // using onlineStatus custom hook
   const onlineStatus = useOnlineStatus();
@@ -31,15 +36,17 @@ const RestaurantContainer = () => {
     <Shimmer />
   ) : (
     <div className="restaurant-container">
-      <div className="res-search">
-        <div className="search">
+      <div className="res-search flex items-center">
+        <div className="search m-4 p-4">
           <input
             type="text"
             placeholder="Search"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
+            className="px-4 py-2 m-4 bg-green-500 text-white font-bold rounded-lg"
             onClick={() => {
               const filteredRestaurants = listOfRestaurants.filter(
                 (restaurant) =>
@@ -54,9 +61,9 @@ const RestaurantContainer = () => {
             Search
           </button>
         </div>
-        <div className="filter">
+        <div className="filter m-2 p-4">
           <button
-            className="filter-btn"
+            className="filter-btn px-4 py-2 bg-gray-100 border-green-500 border-5 rounded-lg"
             onClick={() => {
               const filteredList = listOfRestaurants.filter(
                 (restaurant) => restaurant.info.avgRating >= 4
@@ -69,17 +76,29 @@ const RestaurantContainer = () => {
         </div>
       </div>
 
-      <div className="res-cards">
+      <div className="flex flex-wrap mx-5 justify-center items-center">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
               to={"/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
             >
+              {/* if the restaurant is promoted then add a promoted label to it. */}
               <RestaurantCard
                 restaurant={restaurant}
-                key={restaurant.info.id}
+                key={restaurant.info.id + restaurant.info.name}
               />
+              {restaurant?.info.avgRating > 4.3 ? (
+                <RestaurantCardPromoted
+                  restaurant={restaurant}
+                  key={restaurant.info.id}
+                />
+              ) : (
+                <RestaurantCard
+                  restaurant={restaurant}
+                  key={restaurant.info.id}
+                />
+              )}
             </Link>
           );
         })}
