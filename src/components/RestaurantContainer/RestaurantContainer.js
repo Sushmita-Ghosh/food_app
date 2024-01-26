@@ -32,7 +32,7 @@ const RestaurantContainer = () => {
     );
   }
 
-  return listOfRestaurants.length == [] ? (
+  return listOfRestaurants?.length == [] ? (
     <Shimmer />
   ) : (
     <div className="restaurant-container">
@@ -77,7 +77,7 @@ const RestaurantContainer = () => {
       </div>
 
       <div className="flex flex-wrap mx-5 justify-center items-center">
-        {filteredRestaurants.map((restaurant) => {
+        {filteredRestaurants?.map((restaurant) => {
           return (
             <Link
               to={"/restaurants/" + restaurant.info.id}

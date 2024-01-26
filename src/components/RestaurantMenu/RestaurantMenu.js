@@ -11,7 +11,7 @@ function RestaurantMenu() {
   // console.log(resId);
 
   // taking the state for the index of the  restaurant category
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState(null);
 
   // custom hook to fetch data
   const resInfo = useRestaurantMenu(resId);

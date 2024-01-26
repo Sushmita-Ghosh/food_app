@@ -3,10 +3,14 @@ import ReactDOM from "react-dom";
 import logo from "../../assets/Logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const onlineStatus = useOnlineStatus();
+  const cartItems = useSelector((state) => state.cart.items);
+
+  console.log(cartItems);
 
   return (
     <div className="flex justify-between shadow-lg">
@@ -25,11 +29,11 @@ const Header = () => {
           <li className="px-4" href="#">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="px-4" href="#">
+          {/* <li className="px-4" href="#">
             <Link to="/grocery">Grocery</Link>
-          </li>
+          </li> */}
           <li className="px-4" href="#">
-            Cart
+            <Link to="/cart"> 🛒 {cartItems?.length}</Link>
           </li>
           <button
             className="login-btn"
