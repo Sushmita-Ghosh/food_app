@@ -14,7 +14,7 @@ const RestaurantCard = ({ restaurant }) => {
     deliveryTime,
   } = restaurant.info;
   return (
-    <div className="m-4 p-4 w-[250px] h-[370px] bg-gray-100 hover:bg-gray-200 rounded-lg overflow-hidden">
+    <div className="m-4 p-4 w-[250px] h-[300px] shadow-lg hover:bg-gray-50 rounded-lg overflow-hidden">
       <div>
         <img
           className="w-full h-[150px] rounded-lg"
@@ -22,11 +22,23 @@ const RestaurantCard = ({ restaurant }) => {
           alt={name}
         />
       </div>
-      <h3 className="font-bold py-4 text-lg">{name}</h3>
-      <h4>{cuisines.slice(0, 2).join(" ,")}</h4>
-      <h4>{avgRating} stars</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{deliveryTime} minutes</h4>
+      <h3 className="font-bold text-sm uppercase my-1 px-4 py-1">{name}</h3>
+      <h4 className="text-sm rounded-full bg-gray-50 px-4 py-1 my-1">
+        {cuisines.slice(0, 2).join(" ,")}
+      </h4>
+
+      <div className="flex items-center justify-around">
+        <h4 className="text-sm rounded-full bg-gray-50 px-4 py-1 my-1">
+          {avgRating} stars
+        </h4>
+        <h4 className="text-sm rounded-full bg-green-500 text-gray-50 px-4 py-1 my-1">
+          {costForTwo}
+        </h4>
+      </div>
+
+      {/* <h4 className="text-sm rounded-full bg-gray-50 px-4 py-1 my-1">
+        {deliveryTime} minutes
+      </h4> */}
     </div>
   );
 };
