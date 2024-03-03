@@ -47,7 +47,9 @@ function RestaurantMenu() {
 
   return (
     <div className="text-center">
-      <h1 className="font-bold my-6 text-2xl">{name}</h1>
+      <h1 className="font-bold my-6 text-3xl bg-gradient-to-t from-green-400 to-green-900 bg-clip-text text-transparent">
+        {name}
+      </h1>
       <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>

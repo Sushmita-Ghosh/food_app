@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
 import RestaurantCard, {
   withPromotedLabel,
 } from "../RestaurantCard/RestaurantCard";
-import restaurants from "../../utils/mock-data";
 import { useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import useRestaurants from "../../utils/useRestaurants";
 import hero from "../../assets/hero.jpg";
+import "./RestaurantContainer.css";
 
 const RestaurantContainer = () => {
   const [searchText, setSearchText] = useState("");
@@ -44,6 +43,9 @@ const RestaurantContainer = () => {
               <em>Order food from favourite restaurants near you</em>
             </h6>
             <h1 className="text-6xl font-bold">Don't miss out!</h1>
+            <button className="rounded-full px-6 py-2 border-2 border-green-500 text-gray-50 font-bold mt-4 bg-green-500 hover:bg-gray-50  hover:border-green-500 hover:text-gray-900">
+              Order Now
+            </button>
           </div>
           <div className="w-1/2">
             <img src={hero} alt="hero" className="rounded-full" />
@@ -51,7 +53,7 @@ const RestaurantContainer = () => {
         </div>
       </section>
 
-      <section className="menu-container mx-auto py-8">
+      <section className="menu-container mx-auto py-8 px-8">
         <h1 className="text-xl font-bold mb-8">All Restaurants</h1>
         <div className="res-search flex items-center justify-center">
           <div className="pt-2 relative text-gray-600">
