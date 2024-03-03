@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import logo from "../../assets/Logo.png";
+import cart from "../../assets/cart.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
+import "./Header.css";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const cartItems = useSelector((state) => state.cart.items);
-
-  console.log(cartItems);
 
   return (
     <div className="flex justify-between shadow-lg">
@@ -19,23 +18,27 @@ const Header = () => {
       </div>
       <div className="flex items-center">
         <ul className="flex p-4 m-4">
-          <li className="px-4">Online Status: {onlineStatus ? "✅" : "🔴"}</li>
-          <li className="px-4" href="#">
+          <li className="px-4 py-2">
+            Online Status: {onlineStatus ? "✅" : "🔴"}
+          </li>
+          <li className="px-4 py-2" href="#">
             <Link to="/">Home</Link>
           </li>
-          <li className="px-4" href="#">
+          <li className="px-4 py-2" href="#">
             <Link to="/about"> About</Link>
           </li>
-          <li className="px-4" href="#">
+          <li className="px-4 py-2" href="#">
             <Link to="/contact">Contact</Link>
           </li>
-          {/* <li className="px-4" href="#">
-            <Link to="/grocery">Grocery</Link>
-          </li> */}
-          <li className="px-4" href="#">
-            <Link to="/cart"> 🛒 {cartItems?.length}</Link>
+          <li className="px-4 py-2" href="#">
+            <Link to="">Login</Link>
           </li>
-          <button
+          <li className="px-4 bg-green-500 rounded-full py-2" href="#">
+            <Link to="/cart">
+              <img src={cart} />
+            </Link>
+          </li>
+          {/* <button
             className="login-btn"
             onClick={() => {
               btnNameReact === "Login"
@@ -44,7 +47,7 @@ const Header = () => {
             }}
           >
             {btnNameReact}
-          </button>
+          </button> */}
         </ul>
       </div>
     </div>

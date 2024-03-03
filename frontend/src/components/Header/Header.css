@@ -1,29 +1,8 @@
-.header {
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+li:hover {
+  color: green;
+  transition: var(--smooth);
 }
 
-.logo img {
-  height: 100px;
-  width: 100px;
-}
-
-.nav-items ul {
-  display: flex;
-  list-style: none;
-}
-
-.nav-items li {
-  padding: 10px;
-  margin: 10px;
-}
-
-.login-btn {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: #ffe6c7;
+li:last-child:hover {
+  background-color: #14532d;
 }
