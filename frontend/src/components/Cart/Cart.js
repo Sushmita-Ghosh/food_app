@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import ItemList from "../ItemList/ItemList";
 import { clearCart } from "../../utils/store/cartSlice";
+import { Link } from "react-router-dom";
+import empty from "../../assets/empty.png";
+import emptyCart from "../../assets/cart-empty.png";
+import cartFull from "../../assets/cart-full.png";
+import CartItem from "../CartItem/CartItem";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -12,20 +17,54 @@ const Cart = () => {
   };
 
   return (
-    <div className="text-center m-4 p-4">
-      <h1 className="text-3xl font-bold">Cart</h1>
-      <div className="m-auto w-6/12 p-4">
-        <button
-          className="p-2 m-2 bg-black text-white rounded-md ease-in-out transition-all duration-300 active:scale-50"
-          onClick={handleClearCart}
-        >
-          Clear Cart
-        </button>
+    <section className="empty-cart py-16 bg-gray-50 h-screen">
+      <div className="container mx-auto text-center">
+        <div className="m-auto w-1/2 p-4">
+          {cartItems.length === 0 ? (
+            <>
+              <h1 className="text-3xl	font-bold mb-2 capitalize">
+                Your cart is empty{" "}
+                <img src={emptyCart} className="w-8 inline-block" alt="empty" />
+              </h1>
+              <p className="text-md text-gray-400 mb-4">
+                You have no items in your cart. <br />
+                To order something, click on the "Add to Cart" button
+              </p>
 
-        {cartItems.length === 0 && <h1>No items in cart</h1>}
-        <ItemList items={cartItems} />
+              <img
+                className="w-8/12 mx-auto object-cover"
+                src={empty}
+                alt="empty"
+              />
+              <Link to="/">
+                <button className="rounded-full px-6 py-2 border-2 border-green-500 text-gray-50 font-bold mt-4 bg-green-500 hover:bg-gray-50  hover:border-green-500 hover:text-gray-900">
+                  Go to Home
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <div className="flex items-center justify-between border-3 border-bottom border-gray-100 pb-4">
+                <div className="flex items-center">
+                  <img src={cartFull} alt="empty" className="w-10" />
+                  <h1 className="font-bold ml-4 text-2xl">Order Summary</h1>
+                </div>
+                <div className="flex items-center">
+                  <button
+                    className="rounded-full ml-4 px-4 border-2 border-green-500 text-gray-50 font-bold mt-4 bg-green-500 hover:bg-gray-50  hover:border-green-500 hover:text-gray-900"
+                    onClick={handleClearCart}
+                  >
+                    Clear Cart
+                  </button>
+                </div>
+              </div>
+
+              <CartItem items={cartItems} addButton={false} />
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

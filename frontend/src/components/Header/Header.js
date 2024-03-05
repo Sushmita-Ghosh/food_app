@@ -18,9 +18,9 @@ const Header = () => {
       </div>
       <div className="flex items-center">
         <ul className="flex p-4 m-4">
-          <li className="px-4 py-2">
+          {/* <li className="px-4 py-2">
             Online Status: {onlineStatus ? "✅" : "🔴"}
-          </li>
+          </li> */}
           <li className="px-4 py-2" href="#">
             <Link to="/">Home</Link>
           </li>

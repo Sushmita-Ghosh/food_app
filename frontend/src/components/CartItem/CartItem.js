@@ -3,11 +3,7 @@ import { CDN_URL } from "../../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../utils/store/cartSlice";
 
-const ItemList = ({ items, addButton }) => {
-  // console.log(items);
-
-  const cartItems = useSelector((state) => state.cart.items);
-
+const CartItem = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {
@@ -20,7 +16,7 @@ const ItemList = ({ items, addButton }) => {
       {items.map((item) => (
         <div
           key={item.card?.info?.id}
-          className="px-2 py-4 m-2  border-gray-50 text-left flex justify-between"
+          className="px-2 py-4 m-2  text-left flex justify-between "
         >
           <div className="w-9/12">
             <div className="py-2">
@@ -35,16 +31,6 @@ const ItemList = ({ items, addButton }) => {
             <p className="text-xs">{item.card?.info?.description}</p>
           </div>
           <div className="relative w-3/12 mx-4">
-            <div className="absolute top-0 right-0">
-              {addButton && (
-                <button
-                  className="p-2 bg-green-500 text-white font-semibold shadow-lg ease-in-out transition-all duration-300 active:scale-50"
-                  onClick={() => handleAddItem(item)}
-                >
-                  Add +
-                </button>
-              )}
-            </div>
             <img
               src={CDN_URL + item.card?.info?.imageId}
               className="object-fit object-top w-full h-28 rounded-md"
@@ -52,8 +38,15 @@ const ItemList = ({ items, addButton }) => {
           </div>
         </div>
       ))}
+
+      <div className="text-right py-4">
+        <div>
+          <span className="font-bold text-lg">Total Amount</span>
+          <span className="text-2xl ml-2 font-bold text-green-500">₹ 300</span>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default ItemList;
+export default CartItem;

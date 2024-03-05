@@ -16,7 +16,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
           <span className="cursor-pointer">🔽</span>
         </div>
         {/* Accordian Body */}
-        {showItems && <ItemList items={data.itemCards} />}
+        {showItems && <ItemList items={data.itemCards} addButton={true} />}
       </div>
     </div>
   );
