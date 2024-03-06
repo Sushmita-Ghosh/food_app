@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import UserContext from "./utils/UserContext";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart/Cart";
+import Login from "./components/Login/Login";
 // Since our main app is of restaurants we will load Grocery lazily
 const Grocery = lazy(() => import("./components/Grocery/Grocery"));
 
@@ -45,6 +46,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/grocery",
