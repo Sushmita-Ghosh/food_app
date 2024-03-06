@@ -28,26 +28,16 @@ const Header = () => {
             <Link to="/about"> About</Link>
           </li>
           <li className="px-4 py-2" href="#">
-            <Link to="/contact">Contact</Link>
+            <Link to="/faq">FAQ</Link>
           </li>
           <li className="px-4 py-2" href="#">
-            <Link to="">Login</Link>
+            <Link to="/login">Login</Link>
           </li>
           <li className="px-4 bg-green-500 rounded-full py-2" href="#">
             <Link to="/cart">
               <img src={cart} />
             </Link>
           </li>
-          {/* <button
-            className="login-btn"
-            onClick={() => {
-              btnNameReact === "Login"
-                ? setBtnNameReact("Logout")
-                : setBtnNameReact("Login");
-            }}
-          >
-            {btnNameReact}
-          </button> */}
         </ul>
       </div>
     </div>
