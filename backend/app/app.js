@@ -2,7 +2,7 @@ const express = require("express");
 const ErrorHandler = require("./utlis/errorHandler");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const fileUpload = require("express-fileupload");
+const user = require("./controllers/user");
 
 // create express app
 const app = express();
@@ -10,17 +10,16 @@ const app = express();
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  fileUpload({
-    useTempFiles: true,
-  })
-);
 
 // config
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config({ path: "./config/.env" });
 }
+
+// routes
+app.use("/api/v1/user", user);
 
 // error handler
 app.use(ErrorHandler);
