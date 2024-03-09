@@ -1,5 +1,5 @@
 const express = require("express");
-const ErrorHandler = require("./utlis/errorHandler");
+const ErrorHandler = require("./middlewares/error");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const user = require("./controllers/user");

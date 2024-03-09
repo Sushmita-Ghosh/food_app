@@ -14,6 +14,7 @@ import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import FAQ from "./components/FAQ/FAQ";
+import Activation from "./components/Activation/Activation";
 
 const AppLayout = () => {
   return (
@@ -49,6 +50,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/activate/:token",
+        element: <Activation />,
       },
       {
         path: "/signup",
