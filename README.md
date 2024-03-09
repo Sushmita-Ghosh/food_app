@@ -13,6 +13,9 @@ Welcome to Big Bites - where flavor meets innovation, and every bite is an adven
 ## 📸 Screenshots
 
 
+## 📂 Resources:
+- [Nodemailer Configuration](https://dev.to/alakazam03/sending-emails-in-nodejs-with-nodemailer-1jn1)
+
 ## 🍕 Getting Started
 
 
