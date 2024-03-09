@@ -47,14 +47,16 @@ const userSchema = new mongoose.Schema({
     default: "user",
   },
   avatar: {
-    public_id: {
-      type: String,
-      required: true,
-    },
-    url: {
-      type: String,
-      required: true,
-    },
+    // public_id: {
+    //   type: String,
+    //   required: true,
+    // },
+    // url: {
+    //   type: String,
+    //   required: true,
+    // },
+    type: String,
+    default: "avatar.png",
   },
   createdAt: {
     type: Date,
@@ -64,7 +66,7 @@ const userSchema = new mongoose.Schema({
   resetPasswordTime: Date,
 });
 
-//  Hash password
+// hashing password
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
