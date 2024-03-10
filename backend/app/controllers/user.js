@@ -10,7 +10,7 @@ const catchAsyncError = require("../middlewares/catchAsyncError");
 const sendToken = require("../utlis/jwtToken");
 const ErrorHandler = require("../utlis/errorHandler");
 
-router.post("/create-user", upload.single("file"), async (req, res) => {
+router.post("/create-user", upload.single("file"), async (req, res, next) => {
   const { name, email, password } = req.body;
 
   const userEmail = await User.findOne({ email });
@@ -102,6 +102,35 @@ router.post(
       });
 
       sendToken(user, 201, res);
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// login user
+router.post(
+  "/login-user",
+  catchAsyncError(async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return next(new ErrorHandler("Please Enter Email & Password", 400));
+      }
+
+      const user = await User.findOne({ email }).select("+password");
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exist", 401));
+      }
+
+      const isPasswordMatched = await user.comparePassword(password);
+
+      if (!isPasswordMatched) {
+        return next(new ErrorHandler("Sorry, Invalid Email or Password", 401));
+      }
+
+      sendToken(user, 200, res);
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
