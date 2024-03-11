@@ -7,6 +7,11 @@ module.exports = {
         "green-500": "#008037",
         "black-900": "#1F2937",
       },
+
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],

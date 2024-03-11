@@ -14,30 +14,37 @@ const Header = () => {
   return (
     <>
       {loading ? null : (
-        <div className="flex justify-between shadow-lg">
+        <div className="flex items-center justify-between shadow-lg h-auto">
           <div className="flex items-center">
-            <img className="w-28" src={logo} alt="website logo" />
+            <img className="w-28 h-28" src={logo} alt="website logo" />
           </div>
           <div className="flex items-center">
-            <ul className="flex p-4 m-4">
-              {/* <li className="px-4 py-2">
-            Online Status: {onlineStatus ? "✅" : "🔴"}
-          </li> */}
-              <li className="px-4 py-2" href="#">
-                <Link to="/">Home</Link>
+            <ul className="flex p-4 m-4 items-center">
+              <li className="px-4 py-2 font-roboto" href="#">
+                <Link to="/">
+                  <p className="font-roboto">Home</p>
+                </Link>
               </li>
               <li className="px-4 py-2" href="#">
-                <Link to="/about"> Profile</Link>
+                <Link to="/about">
+                  {" "}
+                  <p className="font-roboto"> Profile</p>
+                </Link>
               </li>
               <li className="px-4 py-2" href="#">
-                <Link to="/faq">FAQ</Link>
+                <Link to="/faq">
+                  <p className="font-roboto"> FAQ </p>
+                </Link>
               </li>
               <li className="px-4 py-2" href="#">
-                <Link to="/login">Login</Link>
+                <Link to="/login">
+                  {" "}
+                  <p className="font-roboto">Login</p>
+                </Link>
               </li>
 
               <li
-                className="px-2 w-10 h-10 relative rounded-full py-2"
+                className="px-2  w-10 h-10 relative rounded-full py-2"
                 href="#"
               >
                 <Link to="/cart">
@@ -48,15 +55,12 @@ const Header = () => {
                 </Link>
               </li>
 
-              <li
-                className="px-4 w-16 h-16 relative rounded-full py-2"
-                href="#"
-              >
+              <li className="px-4 relative py-2">
                 {isAuthenticated ? (
                   <Link to="/login">
                     <img
                       src={`${backend_url}${user.avatar}`}
-                      className="rounded-full"
+                      className="rounded-full w-10 h-10 object-cover object-center"
                       alt="user"
                     />
                   </Link>
