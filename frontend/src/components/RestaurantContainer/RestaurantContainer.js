@@ -37,17 +37,17 @@ const RestaurantContainer = () => {
   ) : (
     <div className="restaurant-container">
       <section className="hero py-16">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="w-1/2">
-            <h6 className="text-lg">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
+          <div className="w-6/12 md:w-1/2">
+            <h6 className="text-sm md:text-lg">
               <em>Order food from favourite restaurants near you</em>
             </h6>
-            <h1 className="text-6xl font-bold">Don't miss out!</h1>
+            <h1 className="text-3xl md:text-6xl font-bold">Don't miss out!</h1>
             <button className="rounded-full px-6 py-2 border-2 border-green-500 text-gray-50 font-bold mt-4 bg-green-500 hover:bg-gray-50  hover:border-green-500 hover:text-gray-900">
               Order Now
             </button>
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2">
             <img src={hero} alt="hero" className="rounded-full" />
           </div>
         </div>
@@ -104,7 +104,7 @@ const RestaurantContainer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 col-gap-12 row-gap-16">
+        <div className="grid grid-cols-1 place-items-center md:grid-cols-4 md:col-gap-12 md:row-gap-16">
           {filteredRestaurants?.map((restaurant) => {
             return (
               <Link

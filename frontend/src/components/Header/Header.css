@@ -2,7 +2,3 @@ li:hover {
   color: green;
   transition: var(--smooth);
 }
-
-li:last-child:hover {
-  background-color: #14532d;
-}

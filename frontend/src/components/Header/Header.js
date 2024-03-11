@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import logo from "../../assets/Logo.png";
-import cart from "../../assets/cart.png";
+import cart from "../../assets/cart-full.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 import "./Header.css";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -33,9 +35,19 @@ const Header = () => {
           <li className="px-4 py-2" href="#">
             <Link to="/login">Login</Link>
           </li>
-          <li className="px-4 bg-green-500 rounded-full py-2" href="#">
+
+          <li className="px-2 w-10 h-10 relative rounded-full py-2" href="#">
             <Link to="/cart">
-              <img src={cart} />
+              <AiOutlineShoppingCart size={25} color="" />
+              <span className="text-gray-50 right-0 text-md top-0 absolute rounded-full bg-green-600 w-4 h-4  top right p-0 m-0  font-mono text-[12px] leading-tight text-center">
+                {cartItems.length}
+              </span>
+            </Link>
+          </li>
+
+          <li className="px-4 w-10 h-10 relative rounded-full py-2" href="#">
+            <Link to="/cart">
+              <CgProfile size={25} color="" />
             </Link>
           </li>
         </ul>
