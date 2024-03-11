@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header/Header";
 import RestaurantContainer from "./components/RestaurantContainer/RestaurantContainer";
@@ -7,7 +7,7 @@ import About from "./components/About/About";
 import Error from "./components/Error/Error";
 import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu";
 // import Grocery from "./components/Grocery/Grocery";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import UserContext from "./utils/UserContext";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart/Cart";
@@ -15,17 +15,38 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import FAQ from "./components/FAQ/FAQ";
 import Activation from "./components/Activation/Activation";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { server } from "./server";
+import { loadUser } from "./utils/store/thunks/userUtils";
 
 const AppLayout = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
   return (
-    <Provider store={appStore}>
-      <UserContext.Provider value={{ loggedInUser: "Default User" }}>
-        <div className="app">
-          <Header />
-          <Outlet />
-        </div>
-      </UserContext.Provider>
-    </Provider>
+    <UserContext.Provider value={{ loggedInUser: "Default User" }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+    </UserContext.Provider>
   );
 };
 
@@ -74,4 +95,8 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(
+  <Provider store={appStore}>
+    <RouterProvider router={appRouter} />
+  </Provider>
+);

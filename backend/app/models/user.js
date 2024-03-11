@@ -20,28 +20,28 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
   },
-  addresses: [
-    {
-      country: {
-        type: String,
-      },
-      city: {
-        type: String,
-      },
-      address1: {
-        type: String,
-      },
-      address2: {
-        type: String,
-      },
-      zipCode: {
-        type: Number,
-      },
-      addressType: {
-        type: String,
-      },
-    },
-  ],
+  // addresses: [
+  //   {
+  //     country: {
+  //       type: String,
+  //     },
+  //     city: {
+  //       type: String,
+  //     },
+  //     address1: {
+  //       type: String,
+  //     },
+  //     address2: {
+  //       type: String,
+  //     },
+  //     zipCode: {
+  //       type: Number,
+  //     },
+  //     addressType: {
+  //       type: String,
+  //     },
+  //   },
+  // ],
   role: {
     type: String,
     default: "user",
@@ -72,7 +72,8 @@ userSchema.pre("save", async function (next) {
     next();
   }
 
-  this.password = await bcrypt.hash(this.password, 10);
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 // jwt token
@@ -82,7 +83,7 @@ userSchema.methods.getJwtToken = function () {
   });
 };
 
-// compare password
+// compare password -checking whether password is correct or not
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
