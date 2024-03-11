@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { server } from "../../server";
+import { server } from "../../constant.js";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 

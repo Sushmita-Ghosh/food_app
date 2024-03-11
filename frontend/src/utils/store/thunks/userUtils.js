@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { server } from "../../../server";
+import { server } from "../../../constant";
 import {
   loadUserFailure,
   loadUserRequest,
