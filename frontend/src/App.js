@@ -7,7 +7,7 @@ import About from "./components/About/About";
 import Error from "./components/Error/Error";
 import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu";
 // import Grocery from "./components/Grocery/Grocery";
-import { Provider, useDispatch } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import UserContext from "./utils/UserContext";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart/Cart";
@@ -24,31 +24,36 @@ import Footer from "./components/Footer/Footer";
 
 const AppLayout = () => {
   const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: "Default User" }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-    </UserContext.Provider>
+    <>
+      {loading ? null : (
+        <>
+          <div className="app">
+            <Header />
+            <Outlet />
+            <Footer />
+          </div>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+        </>
+      )}
+    </>
   );
 };
 
