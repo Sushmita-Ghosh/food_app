@@ -15,6 +15,7 @@ Welcome to Big Bites - where flavor meets innovation, and every bite is an adven
 
 ## 📂 Resources:
 - [Nodemailer Configuration](https://dev.to/alakazam03/sending-emails-in-nodejs-with-nodemailer-1jn1)
+- [CreateAsyncThunk](https://medium.com/codex/reasoning-behind-using-redux-toolkits-createslice-and-createasyncthunk-to-handle-your-asynchronous-267e6a6514ca)
 
 ## 🍕 Getting Started
 
