@@ -20,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { server } from "./server";
 import { loadUser } from "./utils/store/thunks/userUtils";
+import Footer from "./components/Footer/Footer";
 
 const AppLayout = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const AppLayout = () => {
       <div className="app">
         <Header />
         <Outlet />
+        <Footer />
       </div>
       <ToastContainer
         position="bottom-right"
