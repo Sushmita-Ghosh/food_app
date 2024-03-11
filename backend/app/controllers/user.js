@@ -9,6 +9,7 @@ const sendMail = require("../utlis/sendMail");
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const sendToken = require("../utlis/jwtToken");
 const ErrorHandler = require("../utlis/errorHandler");
+const { isAuthenticatedUser } = require("../middlewares/auth");
 
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
   const { name, email, password } = req.body;
@@ -131,6 +132,30 @@ router.post(
       }
 
       sendToken(user, 200, res);
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// load user
+
+router.get(
+  "/get-user",
+  isAuthenticatedUser,
+  catchAsyncError(async (req, res, next) => {
+    try {
+      // find your user by the id from database from cookies
+      const user = await User.findById(req.user.id);
+
+      if (!user) {
+        return next(new ErrorHandler("User doesn't exist", 401));
+      }
+
+      res.status(200).json({
+        success: true,
+        user,
+      });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
