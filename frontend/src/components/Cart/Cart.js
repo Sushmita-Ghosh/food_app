@@ -49,17 +49,33 @@ const Cart = () => {
                   <img src={cartFull} alt="empty" className="w-10" />
                   <h1 className="font-bold ml-4 text-2xl">Order Summary</h1>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center justify-start">
                   <button
-                    className="rounded-full ml-4 px-4 border-2 border-green-500 text-gray-50 font-bold mt-4 bg-green-500 hover:bg-gray-50  hover:border-green-500 hover:text-gray-900"
+                    className="px-2 py-2 border-2 font-bold mt-4 bg-gray-50 border-green-500 text-gray-900 hover:bg-green-500 hover:border-green-500 hover:text-gray-50"
                     onClick={handleClearCart}
                   >
-                    Clear Cart
+                    Clear
                   </button>
                 </div>
               </div>
 
               <CartItem items={cartItems} addButton={false} />
+
+              <div className="text-right py-4">
+                <div>
+                  <span className="font-bold text-lg">Total Amount</span>
+                  <span className="text-2xl ml-2 font-bold text-green-500">
+                    ₹ 300
+                  </span>
+                </div>
+              </div>
+              <div className="text-right py-4">
+                <div>
+                  <button className="rounded-full px-6 py-2 border-2 border-green-500 text-gray-50 font-bold mt-4 bg-green-500 hover:bg-gray-50  hover:border-green-500 hover:text-gray-900">
+                    Order Now
+                  </button>
+                </div>
+              </div>
             </>
           )}
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { server } from "../../server";
+import { server } from "../../constant";
 import axios from "axios";
 
 const Activation = () => {

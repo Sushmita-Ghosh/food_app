@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import "./Header.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
-import { backend_url } from "../../server.js";
+import { backend_url } from "../../constant.js";
 
 const Header = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -27,7 +27,7 @@ const Header = () => {
                 <Link to="/">Home</Link>
               </li>
               <li className="px-4 py-2" href="#">
-                <Link to="/about"> About</Link>
+                <Link to="/about"> Profile</Link>
               </li>
               <li className="px-4 py-2" href="#">
                 <Link to="/faq">FAQ</Link>

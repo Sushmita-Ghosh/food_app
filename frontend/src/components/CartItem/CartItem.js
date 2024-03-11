@@ -1,16 +1,7 @@
 import React from "react";
 import { CDN_URL } from "../../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../utils/store/cartSlice";
 
 const CartItem = ({ items }) => {
-  const dispatch = useDispatch();
-
-  const handleAddItem = (item) => {
-    // dispatch an action
-    dispatch(addItem(item));
-  };
-
   return (
     <div>
       {items.map((item) => (
@@ -28,7 +19,6 @@ const CartItem = ({ items }) => {
                   : item.card?.info?.defaultPrice / 100}
               </span>
             </div>
-            <p className="text-xs">{item.card?.info?.description}</p>
           </div>
           <div className="relative w-3/12 mx-4">
             <img
@@ -38,13 +28,6 @@ const CartItem = ({ items }) => {
           </div>
         </div>
       ))}
-
-      <div className="text-right py-4">
-        <div>
-          <span className="font-bold text-lg">Total Amount</span>
-          <span className="text-2xl ml-2 font-bold text-green-500">₹ 300</span>
-        </div>
-      </div>
     </div>
   );
 };
