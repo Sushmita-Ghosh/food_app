@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { server } from "../../constant.js";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
+
+  const { isAuthenticated } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    // if the user is logged in we should not go to login page again
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +38,7 @@ const Login = () => {
       if (data.success === true) {
         toast.success("Login Success!!");
         navigate("/");
-        window.location.reload();
+        window.location.reload(true);
       }
     } catch (error) {
       toast.error(error.response.data.message);

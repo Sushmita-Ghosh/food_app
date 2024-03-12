@@ -17,9 +17,9 @@ const Cart = () => {
   };
 
   return (
-    <section className="empty-cart py-16 bg-gray-50 h-screen">
+    <section className="empty-cart px-2 py-16 bg-gray-50 min-h-screen">
       <div className="container mx-auto text-center">
-        <div className="m-auto w-1/2 p-4">
+        <div className="m-auto md:w-1/2 p-4">
           {cartItems.length === 0 ? (
             <>
               <h1 className="text-3xl	font-bold mb-2 capitalize">
@@ -58,8 +58,9 @@ const Cart = () => {
                   </button>
                 </div>
               </div>
-
-              <CartItem items={cartItems} addButton={false} />
+              {cartItems.map((item) => (
+                <CartItem item={item} addButton={true} />
+              ))}
 
               <div className="text-right py-4">
                 <div>
@@ -69,6 +70,7 @@ const Cart = () => {
                   </span>
                 </div>
               </div>
+
               <div className="text-right py-4">
                 <div>
                   <button className="rounded-full px-6 py-2 border-2 border-green-500 text-gray-50 font-bold mt-4 bg-green-500 hover:bg-gray-50  hover:border-green-500 hover:text-gray-900">

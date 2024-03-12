@@ -4,7 +4,7 @@ import { AiFillFacebook, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <div className="bg-green-600 text-gray-50 sticky top-[100vh]">
+    <div className="bg-green-600 text-gray-50">
       <div className="grid grid-cols-1 place-items-center sm:grid-cols-3 lg:grid-cols-3 gap-6 sm:px-8 py-5 sm:text-center ">
         <ul className="px-5">
           <img
